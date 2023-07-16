@@ -61,3 +61,5 @@ gem 'devise'
 gem 'bootstrap', '~> 5.3.0.alpha3'
 #jquery
 gem 'jquery-rails'
+
+gem 'kaminari','~> 1.2.1'
