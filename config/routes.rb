@@ -12,4 +12,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+
+namespace :public do
+  get 'customers/check'
+  get 'customers/my_page', to: 'customers#show', as: 'my_page'
+end
+
+namespace :admin do
+  resources :customers, only: [:index, :show, :edit, :update]
+  end
 end
