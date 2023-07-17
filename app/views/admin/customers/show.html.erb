@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="row">
-    <h5 class="bg-light text-dark"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h5>
+    <h5 class="bg-light text-dark"><%= @customer.family_name + @customer.first_name %>さんの会員詳細</h5>
   </div>
 
     <div class="row">
@@ -10,15 +10,15 @@
     </div>
 
     <div class="row">
-      <p class="col-md-2">氏名</p><p class="col-md-8"><%= @customer.last_name + @customer.first_name %></p>
+      <p class="col-md-2">氏名</p><p class="col-md-8"><%= @customer.family_name + @customer.first_name %></p>
     </div>
 
     <div class="row">
-      <p class="col-md-2">フリガナ</p><p class="col-md-8"><%= @customer.last_name_kana + @customer.first_name_kana %></p>
+      <p class="col-md-2">フリガナ</p><p class="col-md-8"><%= @customer.family_name_kana + @customer.first_name_kana %></p>
     </div>
 
     <div class="row">
-      <p class="col-md-2">郵便番号</p><p class="col-md-8"><%= @customer.postal_code %></p>
+      <p class="col-md-2">郵便番号</p><p class="col-md-8"><%= @customer.post_code %></p>
     </div>
 
     <div class="row">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-      <p class="col-md-2">電話番号</p><p class="col-md-8"><%= @customer.phone_number %></p>
+      <p class="col-md-2">電話番号</p><p class="col-md-8"><%= @customer.phonenumber %></p>
     </div>
 
     <div class="row">
