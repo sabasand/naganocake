@@ -1,0 +1,60 @@
+<p id="notice"></p>
+<div class="container">
+
+  <div class="row">
+    <h5 class="bg-light text-dark"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h5>
+  </div>
+
+    <div class="row">
+      <p class="col-md-2">会員ID</p><p class="col-md-8"><%= @customer.id %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">氏名</p><p class="col-md-8"><%= @customer.last_name + @customer.first_name %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">フリガナ</p><p class="col-md-8"><%= @customer.last_name_kana + @customer.first_name_kana %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">郵便番号</p><p class="col-md-8"><%= @customer.postal_code %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">住所</p><p class="col-md-8"><%= @customer.address %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">電話番号</p><p class="col-md-8"><%= @customer.phone_number %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">メールアドレス</p><p class="col-md-8"><%= @customer.email %></p>
+    </div>
+
+    <div class="row">
+      <p class="col-md-2">会員ステータス</p><p class="col-md-8"><% if @customer.is_deleted == false %>
+                         <strong class="text-success">有効</strong>
+                       <% elsif @customer.is_deleted == true %>
+                         <strong class="text-secondary">退会</strong>
+                       <% end %></p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 offset-md-2">
+        <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success btn-sm" %>
+      </div>
+      <!--<div class="col-md-2">-->
+        <%#= link_to "注文一覧を見る", class: "btn btn-primary btn-sm" %>
+
+        <%#= link_to "注文一覧を見る", admin_path,これは個人の注文履歴じゃない。 class: "btn btn-primary btn-sm" %>
+      <!--</div>-->
+    </div>
+
+
+    </div>
+  </div>
+
+  </div>
+</div>
