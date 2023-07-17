@@ -1,0 +1,9 @@
+<h1>admin/genres#indexのページ</h1>
+
+<h5 class="background-color:#DCDCDC">ジャンル一覧・追加</h5>
+  <!-- 新規投稿画面 -->
+    <%= form_with @genres, local: true do |f| %>
+      <label>ジャンル</label>
+        <%= f.text_field :genre, placeholder: "ジャンル名" %>
+        <%= f.submit "送信" %>
+    <% end %>
