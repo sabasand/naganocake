@@ -3,5 +3,5 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録をください<br />
+  <%= link_to "こちら", new_registration_path(resource_name) %>
 <% end %>
