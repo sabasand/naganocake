@@ -1,0 +1,87 @@
+<p id="notice"></p>
+<div class="container">
+
+  <div class="row">
+    <h5 class="bg-light text-dark">注文履歴詳細</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+
+    <h6>注文情報</h6>
+    <table class="table", border="1">
+      <tr>
+        <th class="bg-light">注文日</th>
+        <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+      </tr>
+
+      <tr>
+        <th class="bg-light">配送先</th>
+        <td>〒<%= @order.post_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="bg-light">支払い方法</th>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+
+      <tr>
+        <th class="bg-light">ステータス</th>
+        <td><%= @order.order_status_i18n %></td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4">
+    <h6>請求情報</h6>
+    <table class="table", border="1">
+      <tr>
+        <th class="bg-light">商品合計</th>
+        <td><%= (@order.total_price - @order.postage).to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">配送料</th>
+        <td><%= @order.postage.to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th class="bg-light"><strong>ご請求額</strong></th>
+        <td><%= @order.total_price.to_s(:delimited) %></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h6>注文内容</h6>
+      <table class="table", border="1">
+        <thead class="thead-light">
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+             <% @order_details.each do |order_detail| %>
+          <tr>
+            <td>
+              <%= order_detail.item.name %>
+            </td>
+            <td>
+              <%= order_detail.price.to_s(:delimited) %>
+            </td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+          </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

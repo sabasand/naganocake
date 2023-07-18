@@ -9,13 +9,13 @@ class Public::CustomersController < ApplicationController
 
   def update
     if current_customer.update(customer_params)
-      redirect_to  public_my_page_path
+      redirect_to  public_mypage_path
     else
       render :edit
     end
   end
 
-  def check
+  def unsubscribe
   end
 
   def withdraw
