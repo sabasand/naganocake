@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :customers, only: [:index, :show, :edit, :update]
       resources :items, only: [:new, :create, :index, :show, :edit, :update]
       resources :orders, only: [:index, :show]
-      resources :genres, only: [:new, :index, :show, :edit, :update]
+      resources :genres, except: [:destroy, :show]
     end
 
   namespace :public do

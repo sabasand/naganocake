@@ -1,6 +1,17 @@
-<h1>ジャンル編集</h1>
-  <%= form_with model: @genre,url: admin_genres_path, local: true do |f| %>
-      <%= f.label :"ジャンル名" %>
-      <%= f.text_field :name , id: "name"%>
-      <%= f.submit "変更を保存" %>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-auto offset-1">
+    <span style="background-color:#DCDCDC">　ジャンル編集　</span>
+  </div>
+
+<!-- 編集フォーム -->
+<%= form_with model: @genre,url: admin_genre_path, local: true do |f| %>  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label class="col-form-label">ジャンル名</label></div>
+        <div class="col-auto">
+        <%= f.text_field :name, placeholder: "ジャンル名" %></div>
+      <div class="col-auto">
+      <%= f.submit "変更を保存", class: 'btn btn-success' %></div>
+    </div>
+  </div>
+<% end %>
