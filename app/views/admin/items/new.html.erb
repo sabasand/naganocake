@@ -1,0 +1,57 @@
+<!-- 商品新規登録 -->
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h3 class="card-body bg-light">商品新規登録</h3>
+
+        <div>
+          <%= form_with(model: @item, url:admin_items_path , local: true) do |f| %>   <!-- 新規登録の設定-->
+            <!-- エラーメッセージ-->
+            <%= render 'admin/shared/error_messages', resource: @item %>
+
+            <!-- 画像 -->
+            <div class="field">
+              <div class="商品画像">
+              <%= f.file_field :item_image, placeholder: "Image", accept: "image/*" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :"商品名" %>
+              <%= f.text_field :name %>
+            </div>
+
+            <div class="field">
+              <%= f.label :"商品説明" %>
+              <%= f.text_area :description %>
+            </div>
+
+            <div class="field">
+              <%= f.label :"ジャンル" %>
+              <%= f.collection_select( :id, Genre.all, :id,  :name, :prompt => "-- 選択してください --") %>
+            </div>
+
+            <div class="field">
+              <%= f.label :"税抜価格" %>
+              <%= f.text_field :price %>
+            </div>
+
+            <div class="field">
+              <%= f.label :"販売ステータス" %>
+              <!-- ラジオボタン -->
+              <%= f.radio_button :is_active, :true, checked: true %>
+              <%= f.label :is_active_true, "販売中" %>
+
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active_false, "販売中止" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "新規登録" %>
+          <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</main>
+

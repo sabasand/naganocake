@@ -1,0 +1,45 @@
+<p id="notice"></p>
+<div class="container">
+
+  <div class="row">
+    <h5 class="bg-light text-dark">注文履歴一覧</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @order.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td>
+            <%= link_to admin_order_path(order.id) do %>
+            <%= order.create_at + order.update.at %>
+            <% end %>
+          </td>
+          <td><%= order.customer.id.name %></td>
+          <td><%= order.oder_detail.quantity %></td>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <!--<div class="col-md-2"></div>-->
+
+  </div>
+
+  <div class="row">
+    <div class="d-block mx-auto">
+      <%= paginate @order %>
+    </div>
+  </div>
+
+</div>

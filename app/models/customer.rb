@@ -4,7 +4,11 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :first_name, presence: true
+ has_many :orders, dependent: :destroy
+ has_many :cart_items, dependent: :destroy
+ has_many :addresses, dependent: :destroy
+
+  validates :first_name, presence: true
   validates :family_name, presence: true
   validates :first_name_kana, presence: true
   validates :family_name_kana, presence: true
@@ -14,7 +18,7 @@ class Customer < ApplicationRecord
 
 
  def name
-    last_name + first_name
+    family_name + first_name
  end
 
 end
