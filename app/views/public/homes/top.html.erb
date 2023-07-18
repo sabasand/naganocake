@@ -1,1 +1,21 @@
-<h1>customers#topのページ</h1>
+<div class="container">
+
+<!--サイドバー（ジャンル検索）-->
+  <div class="row g-3">
+    <div class="col-sm-2">
+    <table border="1" width="20%" height="20%" class="table">
+    <thead>
+      <tr valign="middle" align="center"><th class="table-secondary">ジャンル検索</th></tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |f| %>
+      <tr><td><%= f.name %></td></tr>
+      <% end %>
+    </tbody>
+    </table>
+    </div>
+
+  <!--Top紹介文（画像）-->
+  <!--新着紹介（４件）-->
+  </div>
+</div>
