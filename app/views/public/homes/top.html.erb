@@ -1,21 +1,54 @@
-<div class="container">
+<div class="container" style="margin: 0">
 
 <!--サイドバー（ジャンル検索）-->
-  <div class="row g-3">
-    <div class="col-sm-2">
-    <table border="1" width="20%" height="20%" class="table">
+<div class="row" style="margin-top: 5%">
+  <div class="col-sm-2 offset-1">
+    <table border="1" class="table">
     <thead>
       <tr valign="middle" align="center"><th class="table-secondary">ジャンル検索</th></tr>
     </thead>
     <tbody>
       <% @genres.each do |f| %>
       <tr><td><%= f.name %></td></tr>
+      <tr></tr>
       <% end %>
     </tbody>
     </table>
-    </div>
-
-  <!--Top紹介文（画像）-->
-  <!--新着紹介（４件）-->
+  </div>
+<!--Top紹介文（画像）-->
+  <div class="col-sm-6 offset-1">
+    <h3>ようこそ、ながのCAKEへ！<br />
+    このサイトは、ケーキ販売のECサイトになります。<br />
+    会員でない方も商品の閲覧はできますが、<br />
+    購入には会員登録が必要になります。<br />
+    </h3>
   </div>
 </div>
+<!--新着紹介（４件）-->
+<div class="row">
+  <div class="col-sm-3 offset-3"><h3>新着商品</h3></div></div>
+
+  <div class="container">
+    <div class="row offset-3">
+      <div class="col-sm-2 offset-1" id="new-item">
+        <p>商品画像1</p>
+        <p>商品名1</p>
+        <p>商品価格1</p>
+      </div>
+      <div class="col-sm-2 offset-1" id="new-item">
+        <p>商品画像2</p>
+        <p>商品名2</p>
+        <p>商品価格2</p>
+      </div>
+      <div class="col-sm-2 offset-1" id="new-item">
+        <p>商品画像3</p>
+        <p>商品名3</p>
+        <p>商品価格3</p>
+      </div>
+      <div class="col-sm-2 offset-1" id="new-item">
+        <p>商品画像4</p>
+        <p>商品名4</p>
+        <p>商品価格4</p>
+      </div>
+    </div>
+  </div>
