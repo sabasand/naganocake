@@ -18,7 +18,7 @@ class Admin::ItemsController < ApplicationController
         # 新規投稿が成功したとき:フラッシュメッセージ
         flash[:notice] = "新規登録が完了しました。"
         # 新規登録に成功したら「商品詳細」に遷移する。
-        redirect_to admin_items_path(@item)
+        redirect_to admin_item_path(@item)
     else
         flash[:danger] = "登録内容に不備があります。"
         @items = @item.all
