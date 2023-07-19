@@ -1,0 +1,42 @@
+
+<p id="alert"><%= alert %></p>
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-auto offset-1">
+    <span style="background-color:#DCDCDC">　ジャンル一覧・追加　</span>
+  </div>
+
+<!-- 新規投稿画面 -->
+<%= form_with(model: @genre , url: admin_genres_path, local: true )do |f| %>
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label class="col-form-label">ジャンル名</label></div>
+        <div class="col-auto">
+        <%= f.text_field :name, placeholder: "ジャンル名" %></div>
+      <div class="col-auto">
+      <%= f.submit "　新規登録　", class: 'btn btn-success btn-sm' %></div>
+    </div>
+  </div>
+<% end %>
+
+
+<!-- 投稿されたジャンルを表示させる -->
+<div class="row ">
+  <div class="col-sm-5">
+    <table class="table table-sm">
+      <thead>
+        <tr valign="middle">
+          <th class="table-secondary"colspan="2">　　ジャンル　</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @genres.each do |g| %>
+      <tr valign="middle">
+        <td>　<%= g.name %></td>
+        <td align="center"><%= link_to "　編集する　", edit_admin_genre_path(g.id), class: 'btn btn-success btn-sm' %></td>
+      </tr>
+       <% end %>
+       </tbody>
+    </table>
+  </div>
+</div>

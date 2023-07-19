@@ -20,10 +20,10 @@ Rails.application.routes.draw do
       resources :customers, only: [:index, :show, :edit, :update]
       resources :items, only: [:new, :create, :index, :show, :edit, :update]
       resources :orders, only: [:index, :show]
+      resources :genres, except: [:destroy, :show]
     end
 
   namespace :public do
-
     get 'customers/unsubscribe'
     get 'customers/check'
     get 'customers/mypage', to: 'customers#show', as: 'mypage'
