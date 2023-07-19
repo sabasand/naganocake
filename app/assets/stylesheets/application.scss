@@ -1,2 +1,13 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+/*
+*= ./bootstrap_import
+*= require_tree .
+*= require_self
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}

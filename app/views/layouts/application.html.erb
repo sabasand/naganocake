@@ -5,35 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+  
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class"d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-          <!-- logo部分 -->
-          <a class="navbar-brand p-3" href="/">LOGO</a>
-          <!-- ハンバーガーメニュー部分 -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span></button>
-            <!--動作と見た目の部分-->
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav navbar-expand ms-auto mb-2 mb-lg-0">
-            <!-- ここに、権限ごとに部分テンプレ化したリンクを実装する-->
-            <% if admin_signed_in? %>
-              <%= render 'layouts/headder_admin' %>
-            <% elsif customer_signed_in? %>
-              <%= render 'layouts/headder_customer' %>
-            <% else %>
-              <%= render 'layouts/headder_guest' %>
-            <% end %>
-            </ul>
-          </div>
+      <%= render 'layouts/navbar' %>
+      <div class="container">
+        <div class="row">
+
+          <!--検索フォームの実装-->
         </div>
-      </nav>
+      </div>
     </header>
     <%= yield %>
     <!-- Bootstrap core JS-->
