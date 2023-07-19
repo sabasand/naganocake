@@ -6,7 +6,6 @@
     </div>
   </div>
 
-
   <div class="row justify-content-center">
     <div class="col-sm-2">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -35,7 +34,10 @@
 -->
   <div class="row justify-content-center">
     <div class="col-sm-2">
+      <%= f.submit "ログイン", class: "btn btn-primary btn-md" %>
+  <!--
       <button type="subimit" class="btn btn-primary btn-md">ログイン</button>
+  -->
     </div>
   </div>
 
