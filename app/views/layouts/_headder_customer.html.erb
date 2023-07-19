@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="nav-item col-sm-auto">
-      <%= link_to "マイページ", "", class: 'btn btn-outline-secondary w-auto' %>
+      <%= link_to "マイページ", public_mypage_path, class: 'btn btn-outline-secondary w-auto' %>
     </div>
     <div class="nav-item col-sm-auto">
-      <%= link_to "商品一覧", "", class: 'btn btn-outline-secondary w-auto' %>
+      <%= link_to "商品一覧", public_items_path, class: 'btn btn-outline-secondary w-auto' %>
     </div>
     <div class="nav-item col-sm-auto">
-      <%= link_to "カート", "", class: 'btn btn-outline-secondary w-auto' %>
+      <%= link_to "カート", public_cart_items_path, class: 'btn btn-outline-secondary w-auto' %>
     </div>
     <div class="nav-item col-sm-auto">
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-secondary w-auto' %>
