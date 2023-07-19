@@ -33,7 +33,7 @@
             <% end %>
           </td>
 
-          <td><%= order.billing_total.to_s(:delimited) %>円</td>
+          <td><%= order.total_price.to_s(:delimited) %>円</td>
           <td><%= order.order_status_i18n %></td>
           <td>
             <%= link_to "表示する", public_order_path(order.id), class: "btn btn-primary" %>
