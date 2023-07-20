@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
 
   # 商品新規登録：作成データの保存
   def create
-    @item = Item.new(item_params)
+     @item = Item.new(item_params)
     # バリデーション設定（カラムが存在しているかのチェック）
     if @item.save
         # 新規投稿が成功したとき:フラッシュメッセージ
