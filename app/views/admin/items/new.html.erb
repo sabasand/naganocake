@@ -6,14 +6,14 @@
         <h3 class="card-body bg-light">商品新規登録</h3>
 
         <div>
-          <%= form_with(model: @item, url:admin_items_path , local: true) do |f| %>   <!-- 新規登録の設定-->
+          <%= form_with(model: @item, url:admin_items_path, local: true) do |f| %>   <!-- 新規登録の設定-->
             <!-- エラーメッセージ-->
             <%= render 'admin/shared/error_messages', resource: @item %>
 
             <!-- 画像 -->
             <div class="field">
               <div class="商品画像">
-              <%= f.file_field :item_image, placeholder: "Image", accept: "image/*" %>
+              <%= f.file_field :image, placeholder: "Image", accept: "image/*" %>
             </div>
 
             <div class="field">
@@ -28,7 +28,7 @@
 
             <div class="field">
               <%= f.label :"ジャンル" %>
-              <%= f.collection_select( :id, Genre.all, :id,  :name, :prompt => "-- 選択してください --") %>
+              <%= f.collection_select :genre_id, Genre.all, :id,  :name, :prompt => "-- 選択してください --" %>
             </div>
 
             <div class="field">

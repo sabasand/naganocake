@@ -1,42 +1,48 @@
 <!-- 商品詳細 -->
 <div class="container px-5 px-sm-0">
-    <div class="row">
-      <h2>商品詳細</h2>
+  <div class="row">
+    <h2>商品詳細</h2>
 
-        <div class="col-xs-5">
-		      <!-- 商品画像設定 ※あとで背設定する！ -->
-	      </div>
-
-
-        <table class="table">
-          <tr>
-            <th>商品名</th>
-            <th><%= @item.name %></th>
-          </tr>
-
-          <tr>
-            <th>商品説明</th>
-            <th><%= @item.description %></th>
-          </tr>
-
-          <tr>
-            <th>税込価格<br>(税抜価格)</th>
-            <th>
-              <%= (@item.price * 1.1).to_i to,i %>(<%= @item.price %>) 円
-            </th>
-          </tr>
-
-          <tr>
-            <th>販売ステータス</th>
-            <th>
-            <%= if item.is_active == true %>    <!-- ステータス true：販売中、false：売切れ -->
-              <p>販売中</p>
-            <% else %>
-              <p>売切れ</p>
-            </th>
-          </tr>
-        </table>
-      <div>
-        <%= link_to '編集する', edit_admin_item_path(item.id) %>
+    <div class="col-xs-5">
+     <!-- 画像 -->
+     <%= image_tag @item.get_image(300, 200) %>
     </div>
+
+    <table class="table">
+      <tr>
+        <th>商品名</th>
+        <th><%= @item.name %></th>
+      </tr>
+
+      <tr>
+        <th>商品説明</th>
+        <th><%= @item.description %></th>
+      </tr>
+
+      <tr>
+        <th>ジャンル</th>
+        <th><%= @item.genre.name %></th>
+      </tr>
+
+      <tr>
+        <th>税込価格<br>(税抜価格)</th>
+        <th>
+          <%= (@item.price * 1.1).to_i %>(<%= @item.price %>) 円
+        </th>
+      </tr>
+
+      <tr>
+        <th>販売ステータス</th>
+        <th>
+        <% if @item.is_active == true %>    <!-- ステータス true：販売中、false：売切れ -->
+          <p>販売中</p>
+        <% else %>
+          <p>売切れ</p>
+        <% end %>
+        </th>
+      </tr>
+    </table>
+    <div>
+    <%= link_to '編集する', edit_admin_item_path %>
+  </div>
 </div>

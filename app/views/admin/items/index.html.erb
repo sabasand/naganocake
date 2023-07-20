@@ -1,9 +1,9 @@
 <!-- 商品一覧 -->
-<main>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h3 class="card-body bg-light">商品新規登録</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3 class="card-body bg-light">商品一覧</h3>
+        <table>
           <thead> <!-- 表の列の見出しを定義 -->
             <!-- 見出し -->
             <tr>
@@ -12,27 +12,27 @@
               <th>税抜価格</th>
               <th>ジャンル</th>
               <th>ステータス</th>
-            <tr>
-          <thead>
+            </tr>
+          </thead>
 
           <tbody> <!--表の行（水平方向）をグループ化 -->
             <% @items.each do |item| %>
               <tr>
                 <th><%= item.id %></th>                   <!-- 商品id -->
-                <th><%= like_to item.name, admin_item_path(item.id) %></th>   <!-- 商品名：商品詳細ページへのリンク設定 -->
-                <th><%= item.price_out %></th>            <!-- 税抜価格 -->
-                <th><%= item.genre_id %></th>             <!-- ジャンル -->
+                <th><%= link_to item.name, admin_item_path(item.id) %></th>   <!-- 商品名：商品詳細ページへのリンク設定 -->
+                <th><%= item.price %></th>                <!-- 税抜価格 -->
+                <th><%= item.genre.name %></th>           <!-- ジャンル -->
                 <th>
-                  <%= if item.is_active == true %>        <!-- ステータス true：販売中、false：売切れ -->
-                    <p>販売中</p>
+                  <% if item.is_active == true %>        <!-- ステータス true：販売中、false：売切れ -->
+                    販売中
                   <% else %>
-                    <p>販売停止中</p>
+                    販売停止中
                   <% end %>
                 </th>
               </tr>
             <% end %>
           </tbody>
-      </div>
+        </table>
     </div>
   </div>
-</main>
+</div>

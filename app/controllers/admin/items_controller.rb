@@ -42,7 +42,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       # 変更が成功したとき:フラッシュメッセージ
        flash[:notice] = "変更が完了しました。"
-       redirect_to item_path(@item.id)   # 商品詳細ページへのパス
+       redirect_to admin_item_path(@item.id)   # 商品詳細ページへのパス
     else
        # 変更が成功したとき:フラッシュメッセージ
        flash[:notice] = "変更内容に不備があります。"
@@ -55,6 +55,6 @@ class Admin::ItemsController < ApplicationController
   # 作成データのストロングパラメータ（ユーザーから送信されるデータを制限する機能）の設定
   def item_params
     # 設定内容：商品名、商品説明、ジャンルID、税抜価格、販売ステータス
-    params.require(:item).permit(:name, :description, :genre_id, :price, :is_active )
+    params.require(:item).permit(:name, :description, :genre_id, :price, :is_active, :image )
   end
 end
