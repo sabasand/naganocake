@@ -12,21 +12,21 @@
   <div class="row justify-content-center">
     <div class="col-sm-2">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+      <%= render "public/shared/error_messages", resource: resource %>
       <%= f.label :メールアドレス, class: "col-form-label" %></div>
     <div class="col-sm-4">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class:"form-control form-control-sm"%>
     </div>
   </div>
 
-    <div class="row justify-content-center">
-      <div class="col-sm-2">
-        <%= f.label :パスワード, class: "col-form-label" %>
-      </div>
-      <div class="col-sm-4">
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm" %>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-2">
+      <%= f.label :パスワード, class: "col-form-label" %>
     </div>
+    <div class="col-sm-4">
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm" %>
+    </div>
+  </div>
   <!--
     <%# if devise_mapping.rememberable? %>
       <div class="field">
@@ -35,19 +35,19 @@
       </div>
     <%# end %>
   -->
-    <div class="row justify-content-center">
-      <div class="col-sm-2">
-        <button type="submit" class="btn btn-primary btn-md">ログイン</div>
-    </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-primary btn-md">ログイン</div>
+  </div>
 
-    <div class="row justify-content-start">
-      <div class="col-sm-3 offset-1 g-3 my-4">
-        <span style="background-color:#DCDCDC">　会員登録がお済でない方　</span></div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-sm-6">
-        <p><%= render "public/shared/links" %>から新規登録を行ってください。</p></div>
-    </div>
+  <div class="row justify-content-start">
+    <div class="col-sm-3 offset-1 g-3 my-4">
+      <span style="background-color:#DCDCDC">　会員登録がお済でない方　</span></div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <p><%= render "public/shared/links" %>から新規登録を行ってください。</p></div>
+  </div>
 </div>
 <% end %>
 
