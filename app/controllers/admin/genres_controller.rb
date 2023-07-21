@@ -5,8 +5,9 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to action: :index
     else
-      flash[:alert] = "登録できませんでした。"
-      redirect_to action: :index
+      flash.now[:alert] = "登録できませんでした。"
+      @genres = Genre.all
+      render action: :index
     end
   end
 
@@ -28,8 +29,9 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to action: :index
     else
-      flash[:alert] = "更新できませんでした。"
-      redirect_to action: :index
+      flash.now[:alert] = "更新できませんでした。"
+      @genres = Genre.all
+      render action: :index
     end
   end
 
