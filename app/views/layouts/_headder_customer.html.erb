@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <ul class="row">
     <div class="nav-item col-sm-auto">
       <%= link_to "マイページ", public_mypage_path, class: 'btn btn-outline-secondary w-auto' %>
     </div>
@@ -12,5 +12,11 @@
     <div class="nav-item col-sm-auto">
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-secondary w-auto' %>
     </div>
-  </div>
+  </ul>
+  <ul class="row justify-content-end">
+    <form class="d-flex" role="search">
+      <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </ul>
 </div>

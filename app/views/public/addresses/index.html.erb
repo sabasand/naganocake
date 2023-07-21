@@ -1,0 +1,61 @@
+<!--直打ちして飛べないように設定すること！-->
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-sm-3 offset-1 g-3 my-4">
+    <span style="background-color:#DCDCDC">　配送先登録／一覧　</span></div>
+  </div>
+  <div class="row justify-content-center">
+    <% flash.each do |message_type, message| %>
+    <%= content_tag :div, message, class: "alert alert-danger" %>
+    <% end %>
+  </div>
+  <!-- 新規投稿画面 -->
+
+  <%= form_with(model: @address , url: addresses_path, method: :post, local: true )do |f| %>
+    <div class="row p-2 align-items-center">
+      <div class="label col-md-3">郵便番号(ﾊｲﾌﾝなし)</div>
+      <div class="field col-md-3">
+        <%= f.text_field :post_code, placeholder: "0000000000", class:"form-control" %></div>
+    </div>
+    <div class="row p-2">
+      <label class="label col-md-3">住所</label>
+      <div class="field col-md-6">
+      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control" %></div>
+    </div>
+    <div class="row p-2">
+      <label class="label col-md-3">宛名</label>
+      <div class="field col-md-3">
+      <%= f.text_field :shipname, placeholder: "令和道子", class:"form-control" %></div>
+      <div class="col-auto offset-3">
+      <%= f.submit "　新規登録　", class: 'btn btn-success btn-sm' %></div>
+
+  <% end %>
+
+
+  <!-- 投稿されたジャンルを表示させる -->
+  <div class="row justify-content-start">
+    <div class="col-sm-auto g-3 my-4">
+      <table class="table table-sm-bordered">
+        <thead>
+          <tr valign="middle table-secondary">
+            <th>　郵便番号　</th>
+            <th>　住所　</th>
+            <th>　宛名　</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @addresses.each do |ad| %>
+          <tr valign="middle">
+            <td>　<%= ad.post_code %></td>
+            <td>　<%= ad.address %></td>
+            <td>　<%= ad.shipname %></td>
+            <td align="center"><%= link_to "　編集する　", edit_address_path(ad.id), class: 'btn btn-success btn-sm' %></td>
+            <td align="center"><%= link_to "　削除する　", address_path(ad.id),method: :DELETE, class: 'btn btn-danger btn-sm' %></td>
+          </tr>
+           <% end %>
+         </tbody>
+      </table>
+    </div>
+  </div>
+</div>

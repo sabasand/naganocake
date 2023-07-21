@@ -31,11 +31,16 @@ Rails.application.routes.draw do
     patch 'customers/information', to: 'customers#update'
     patch 'customers/withdraw', to: 'customers#withdraw'
     resources :items, only: [:index, :show]
-     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-     resources :cart_items, only: [:create, :index, :update, :destroy]
-     resources :orders, only: [:new, :create, :index, :show]
-     post '/orders/confirm' => 'orders#confirm', as: 'confirm'
-     get '/orders/complete' => 'orders#complete', as: 'complete'
-     resources :addresses, only: [:create, :index, :show, :edit, :update, :destroy]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:create, :index, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show]
+    post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+    get '/orders/complete' => 'orders#complete', as: 'complete'
+  end
+
+
+#[scope module:]呼び出すURLはそのままに、コントローラーのアクションを名前空間でグループ化させたいとき。
+  scope module: :public do
+    resources :addresses, only: [:create, :index, :edit, :update, :destroy]
   end
 end
