@@ -76,5 +76,5 @@ Rails.application.configure do
   config.hosts.clear
 
   #「Cannot render console from <IPアドレス>! 」に対処するために追記
-  # config.web_console.allowed_ips = '0.0.0.0/0'
+   config.web_console.allowed_ips = '0.0.0.0/0'
 end

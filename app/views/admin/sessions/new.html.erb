@@ -1,6 +1,9 @@
 <div class="container">
+  <% flash.each do |message_type, message| %>
+  <%= content_tag :div, message, class: "alert alert-danger" %>
+  <% end %>
   <div class="row justify-content-start">
-    <div class="col-sm-3 offset-1 ">
+    <div class="col-sm-3 offset-1 g-3 my-4">
       <span style="background-color:#DCDCDC">　管理者ログイン　</span>
     </div>
   </div>

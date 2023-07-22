@@ -9,7 +9,7 @@
     </thead>
     <tbody>
       <% @genres.each do |f| %>
-      <tr><td><%= f.name %></td></tr>
+      <tr><td><%= link_to f.name,admin_genre_path(f.id)  %></td></tr>
       <tr></tr>
       <% end %>
     </tbody>
@@ -27,28 +27,14 @@
 <!--新着紹介（４件）-->
 <div class="row">
   <div class="col-sm-3 offset-3"><h3>新着商品</h3></div></div>
-
-  <div class="container">
+  <div class="container-fluid">
     <div class="row offset-3">
+    <% @items.each do |item| %>
       <div class="col-sm-2 offset-1" id="new-item">
-        <p>商品画像1</p>
-        <p>商品名1</p>
-        <p>商品価格1</p>
+        <p><%= image_tag item.get_image(150, 150)%></p>
+        <p><%= link_to item.name, admin_item_path(item.id) %></p></p>
+        <p><%= item.price %>(+tax)</p>
       </div>
-      <div class="col-sm-2 offset-1" id="new-item">
-        <p>商品画像2</p>
-        <p>商品名2</p>
-        <p>商品価格2</p>
-      </div>
-      <div class="col-sm-2 offset-1" id="new-item">
-        <p>商品画像3</p>
-        <p>商品名3</p>
-        <p>商品価格3</p>
-      </div>
-      <div class="col-sm-2 offset-1" id="new-item">
-        <p>商品画像4</p>
-        <p>商品名4</p>
-        <p>商品価格4</p>
-      </div>
+    <% end %>
     </div>
   </div>

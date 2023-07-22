@@ -12,6 +12,6 @@ class Item < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     # メソッドに対して引数を設定し、引数に設定した値に画像のサイズを変換するように設定
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant(resize_to_fit: [width, height]).processed
   end
 end
