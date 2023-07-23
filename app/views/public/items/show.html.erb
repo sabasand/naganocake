@@ -41,7 +41,6 @@
           <!-- 個数選択のセレクトボックス設定 -->
           <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>                       <!-- hiddenで引き渡す値（商品ID） -->
-            <%= f.hidden_field :customer_id, :value => current_customer.id %>     <!-- hiddenで引き渡す値（会員ID） -->
             <%= f.select :quantity,  *[1..10], :prompt => "個数を選択" %>         <!-- デフォルト表示と1～10まで表示するよう設定 -->
             <%= f.submit "カートに入れる", class: "btn btn-success" %>
           <% end %>
