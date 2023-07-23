@@ -21,7 +21,6 @@ class Admin::ItemsController < ApplicationController
         redirect_to admin_item_path(@item)
     else
         flash[:danger] = "登録内容に不備があります。"
-
         render :new
     end
   end
