@@ -17,7 +17,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
-    redirect_to action: :index
+    @genres = Genre.all
   end
 
   def edit
