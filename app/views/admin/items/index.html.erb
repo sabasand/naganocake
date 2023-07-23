@@ -2,7 +2,13 @@
 <div class="container">
   <div class="row" style="margin-top: 5%">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3 class="card-body bg-light">商品一覧</h3>
+      <table class="table">
+        <tr>
+          <th><h3 class="card-body bg-light">商品一覧　　　　　　　</h3></th>               <!-- タイトル -->
+          <th><%= link_to "新規登録", new_admin_item_path, class: "btn btn-primary" %></th> <!-- 新規登録ボタン -->
+        <tr>
+      </table>
+
         <table class="table">
           <thead class="thead-light"> <!-- 表の列の見出しを定義 -->
             <!-- 見出し -->

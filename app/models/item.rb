@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  validates :title, presence: true  #入力値が空でないこと
+
   # megeという名前でActiveStorageで商品画像を保存できるように設定
   has_one_attached :image
 
