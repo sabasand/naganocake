@@ -1,13 +1,12 @@
 <!-- 商品詳細 -->
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top: 5%">
     <!-- サイドバー -->
-    <div class="col-lg-3">
-      <h2>サイドバー</h2>
-      <table border="1">
+    <div class="col-lg-2">
+      <table border="1" class="table">
         <thead>
-          <tr valign="middle">
-            <th width="100">ジャンル検索</th>
+          <tr valign="middle" align="center">
+            <th class="table-secondary">ジャンル検索</th>
           </tr>
         </thead>
 
@@ -24,7 +23,32 @@
     </div>
 
     <!-- 商品詳細 -->
+    <div class="col-lg-3">
+      <div class="col-xs-5">
+        <!-- 画像 -->
+        <%= image_tag @item.get_image(300, 200) %>
+      </div>
+    </div>
 
+    <div class="col-lg-6">
+      <div>
+        <h2><%= @item.name %></h2>             <!-- 商品名 -->
+        <p><%= @item.description %></p>　      <!-- 商品説明 -->
 
+        <!-- 商品価格（税込） -->
+        <% if @item.is_active == true %>
+          <h3>￥<%= (@item.price * 1.1).to_i %>（税込）</h3>       <!-- 販売ステータスが「true」の場合、商品価格（税込） -->
+          <!-- 個数選択のセレクトボックス設定 -->
+          <%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
+            <%= f.hidden_field :item_id, value: @item.id %>                       <!-- hiddenで引き渡す値（商品ID） -->
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>     <!-- hiddenで引き渡す値（会員ID） -->
+            <%= f.select :quantity,  *[1..10], :prompt => "個数を選択" %>         <!-- デフォルト表示と1～10まで表示するよう設定 -->
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          <% end %>
+        <% else %>
+          <h3>販売停止中</h3>                                  <!-- 販売ステータスが「false」の場合、販売停止中 -->
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

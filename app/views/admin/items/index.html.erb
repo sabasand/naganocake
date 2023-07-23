@@ -1,10 +1,10 @@
 <!-- 商品一覧 -->
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top: 5%">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h3 class="card-body bg-light">商品一覧</h3>
-        <table>
-          <thead> <!-- 表の列の見出しを定義 -->
+        <table class="table">
+          <thead class="thead-light"> <!-- 表の列の見出しを定義 -->
             <!-- 見出し -->
             <tr>
               <th>商品ID</th>
@@ -33,6 +33,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @items, class:"text-center" %>
     </div>
   </div>
 </div>

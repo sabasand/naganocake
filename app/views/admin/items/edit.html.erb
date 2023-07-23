@@ -1,7 +1,7 @@
 <!-- 商品編集 -->
 <main>
   <div class="container">
-    <div class="row">
+    <div class="row" style="margin-top: 5%">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
         <h3 class="card-body bg-light">商品編集</h3>
 
@@ -13,6 +13,7 @@
             <!-- 画像 -->
             <div class="field">
               <div class="商品画像">
+              <%= f.label :"商品画像" %>
               <%= f.file_field :image, placeholder: "Image", accept: "image/*" %>
             </div>
 
@@ -47,7 +48,7 @@
             </div>
 
             <div class="actions">
-              <%= f.submit "変更を保存" %>
+              <%= f.submit "変更を保存", class: "btn btn-success" %>
           <% end %>
           </div>
         </div>
