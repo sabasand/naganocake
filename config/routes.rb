@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     get '/about' => 'public/homes#about'
     get '/admin' => 'admin/homes#top'
 
-
   # 管理者用
   # URL /admin/sign_in ...
     devise_for :admin,skip: [:registrations, :passwords], controllers: {
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
       resources :genres, except: [:destroy, :show]
     end
 
-  namespace :public do
+  scope module: :public do
     get 'customers/unsubscribe'
     get 'customers/check'
     get 'customers/mypage', to: 'customers#show', as: 'mypage'
@@ -36,11 +35,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     post '/orders/confirm' => 'orders#confirm', as: 'confirm'
     get '/orders/complete' => 'orders#complete', as: 'complete'
-  end
-
-
-#[scope module:]呼び出すURLはそのままに、コントローラーのアクションを名前空間でグループ化させたいとき。
-  scope module: :public do
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
   end
 end
