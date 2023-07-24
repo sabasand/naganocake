@@ -6,7 +6,7 @@
         <h3 class="card-body bg-light">商品新規登録</h3>
 
         <div>
-          <%= form_with(model: @item, url:admin_items_path, local: true) do |f| %>   <!-- 新規登録の設定-->
+          <%= form_with(model: @item, url: admin_items_path, local: true) do |f| %>   <!-- 新規登録の設定-->
             <!-- エラーメッセージ-->
             <%= render 'admin/shared/error_messages', resource: @item %>
 
