@@ -32,7 +32,7 @@
     <% @items.each do |item| %>
       <div class="col-sm-2 offset-1" id="new-item">
         <p><%= image_tag item.get_image(150, 150)%></p>
-        <p><%= link_to item.name, admin_item_path(item.id) %></p></p>
+        <p><%= link_to item.name, item_path(item.id) %></p></p>
         <p><%= item.price %>(+tax)</p>
       </div>
     <% end %>
