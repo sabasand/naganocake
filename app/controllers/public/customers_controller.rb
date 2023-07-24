@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     if current_customer.update(customer_params)
-      redirect_to  public_mypage_path
+      redirect_to  mypage_path
     else
       render :edit
     end
@@ -22,7 +22,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to public_root_path
+    redirect_to root_path
   end
 
 
