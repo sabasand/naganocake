@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_19_063600) do
+ActiveRecord::Schema.define(version: 2023_07_24_075909) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -100,9 +100,9 @@ ActiveRecord::Schema.define(version: 2023_07_19_063600) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_active", default: true, null: false
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -110,22 +110,22 @@ ActiveRecord::Schema.define(version: 2023_07_19_063600) do
     t.integer "order_id", null: false
     t.integer "quantity", null: false
     t.integer "price", null: false
-    t.integer "production_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "production_status", default: 0, null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "total_price", null: false
-    t.integer "payment_method", null: false
     t.integer "postage", null: false
     t.string "post_code", null: false
     t.string "address", null: false
     t.string "name", null: false
-    t.integer "orders_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "payment_method", default: 0, null: false
+    t.integer "orders_status", default: 0, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
