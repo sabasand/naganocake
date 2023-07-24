@@ -7,6 +7,6 @@ class OrderDetail < ApplicationRecord
 
 
  def subtotal
-   proce * quantity
+   price * quantity
  end
 end
