@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
         order_detail.save
       end
       cart_items.destroy_all
-    redirect_to public_complete_path
+    redirect_to complete_path
     else
       render :new
     end
