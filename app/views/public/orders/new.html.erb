@@ -3,7 +3,7 @@
   <div class="row">
     <h5 class="bg-light text-dark">注文情報入力</h5></div>
 <!--支払方法選択ラジオbtn-->
-  <%= form_with model: @order, url: confirm_path, method: :post do |f| %>
+  <%= form_with model: @order, url: confirm_path do |f| %>
   <div class="row">
     <div style="font-weight:bold">
       <%= f.label :payment_method, "支払い方法" %>
