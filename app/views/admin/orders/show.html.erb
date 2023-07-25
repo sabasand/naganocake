@@ -24,6 +24,12 @@
         <p>支払方法</p>
         <%= @order.payment_method_i18n %>
       </nav>
+      <<th>注文ステータス</th>
+          <td><%= form_with model: @order, url: admin_order_path do |f| %>
+                <%= f.select :orders_status, Order.orders_statuses.keys,class:"orders_status"%>
+                <%= f.submit '更新', class:"btn btn-sm btn-success" %>
+                <% end %>
+          </td>
     </div>
     <div class="col-md-5 offset-md-1">
       <table class="table">
@@ -33,16 +39,23 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
+            <th>製作ステータス</th>
           </tr>
         </thead>
         <tbody>
           <% @order_details.each do |order_detail| %>
-            <tr>
+            <tbody>
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.price %></td>
               <td><%= order_detail.quantity %></td>
               <td><%= order_detail.price * order_detail.quantity %></td>
-            <tr>
+            <th>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail) do |f|%>
+                <%= f.select :production_status, OrderDetail.production_statuses.keys, class:"production_status"%>
+                <%= f.submit "更新", class:"btn btn-success"%>
+              <% end %>
+            </th>
+        </tbody>
           <% end %>
         </tbody>
       </table>
