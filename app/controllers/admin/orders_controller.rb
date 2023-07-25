@@ -10,5 +10,4 @@ class Admin::OrdersController < ApplicationController
     @order_details = OrderDetail.all
     @full_name = @order.customer.family_name + "" + @order.customer.first_name
   end
-
 end
