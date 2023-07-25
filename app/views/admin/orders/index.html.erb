@@ -25,7 +25,7 @@
             <%= l order.created_at ,format: :long%>
             <% end %>
           </td>
-          <td><%= order.name %></td>
+          <td><%= @full_name %></td>
           <td><%= order.order_details.sum(:quantity) %></td>
           <td><%= order.orders_status %></td>
         <% end %>
