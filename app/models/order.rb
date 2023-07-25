@@ -10,8 +10,4 @@ class Order < ApplicationRecord
       price * quantiy
   end
 
-  def fullname
-   family_name + first_name
-  end
-
 end

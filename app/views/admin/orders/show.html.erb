@@ -6,7 +6,7 @@
         <a>購入者</a>
         <a>
           <%= link_to admin_customer_path(@order.customer_id) do %>
-            <%= @order.customer.fullname %>
+            <%#= @order.customer.full_name %>
           <% end %>
         </a>
       </nav>
@@ -18,7 +18,7 @@
         <a>配送先</a>
         <a><%= @order.post_code %></a>
         <a><%= @order.address %></a></br>
-        <a><%= @order.shipname %></a>
+        <a><%= @order.name %></a>
       </nav>
       <nav class="nav">
         <p>支払方法</p>
@@ -36,12 +36,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.each do |order| %>
+          <% @order_details.each do |od| %>
             <tr>
-              <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.price %></td>
-              <td><%= order_detail.quantity %></td>
-              <td><%= order_detail.price * order_detail.quantity %></td>
+              <td><%= od.item.name %></td>
+              <td><%= od.price %></td>
+              <td><%= od.quantity %></td>
+              <td><%= od.price * od.quantity %></td>
             <tr>
           <% end %>
         </tbody>
