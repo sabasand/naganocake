@@ -17,7 +17,7 @@
       </thead>
 
       <tbody>
-      <% @order.each do |order| %>
+      <% @orders.each do |order| %>
         <tr>
           <td>
             <%= link_to admin_order_path(order.id) do %>
@@ -25,7 +25,7 @@
             <% end %>
           </td>
           <td>
-            <%= order.name %>
+            <%= order.customer.family_name  + order.customer.first_name %>
           </td>
           <td>
             <% total_quantity = 0 %>
@@ -46,7 +46,7 @@
 
   <div class="row">
     <div class="d-block mx-auto">
-      <%= paginate @order %>
+      <%= paginate @orders %>
     </div>
   </div>
 
