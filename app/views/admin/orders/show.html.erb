@@ -6,7 +6,7 @@
         <a>購入者</a>
         <a>
           <%= link_to admin_customer_path(@order.customer_id) do %>
-            <%#= @order.customer.full_name %>
+            <%= @full_name %>
           <% end %>
         </a>
       </nav>
