@@ -1,4 +1,3 @@
-<!--直打ちして飛べないように設定すること！-->
 <div class="container">
   <div class="row justify-content-start">
     <div class="col-sm-3 offset-1 g-3 my-4">
@@ -12,25 +11,24 @@
   <!-- 新規投稿画面 -->
 
   <%= form_with(model: @address , url: addresses_path, method: :post, local: true )do |f| %>
-    <div class="row p-2 align-items-center">
-      <div class="label col-md-3">郵便番号(ﾊｲﾌﾝなし)</div>
-      <div class="field col-md-3">
-        <%= f.text_field :post_code, placeholder: "0000000000", class:"form-control" %></div>
-    </div>
-    <div class="row p-2">
-      <label class="label col-md-3">住所</label>
-      <div class="field col-md-6">
-      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control" %></div>
-    </div>
-    <div class="row p-2">
-      <label class="label col-md-3">宛名</label>
-      <div class="field col-md-3">
-      <%= f.text_field :shipname, placeholder: "令和道子", class:"form-control" %></div>
-      <div class="col-auto offset-3">
-      <%= f.submit "　新規登録　", class: 'btn btn-success btn-sm' %></div>
-
-  <% end %>
-
+  <div class="row p-2 align-items-center">
+    <div class="label col-md-3">郵便番号(ﾊｲﾌﾝなし)</div>
+    <div class="field col-md-3">
+      <%= f.text_field :post_code, placeholder: "0000000000", class:"form-control" %></div>
+  </div>
+  <div class="row p-2">
+    <label class="label col-md-3">住所</label>
+    <div class="field col-md-6">
+    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control" %></div>
+  </div>
+  <div class="row p-2">
+    <label class="label col-md-3">宛名</label>
+    <div class="field col-md-3">
+    <%= f.text_field :shipname, placeholder: "令和道子", class:"form-control" %></div>
+    <div class="col-auto offset-3">
+    <%= f.submit "　新規登録　", class: 'btn btn-success btn-sm' %></div>
+    <% end %>
+  </div>
 
   <!-- 投稿されたジャンルを表示させる -->
   <div class="row justify-content-start">

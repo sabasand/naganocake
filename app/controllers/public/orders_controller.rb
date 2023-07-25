@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :cartitem_nill,   only: [:new, :create]
 
   def new
     @order = current_customer.orders.new
@@ -28,27 +29,24 @@ class Public::OrdersController < ApplicationController
   def confirm
     @orders = current_customer.orders
     @order = Order.new(order_params)
-
-  if params[:order][:select_address] == "0"
-    @order.post_code = current_customer.post_code
-    @order.address = current_customer.address
-    @order.name = current_customer.family_name + current_customer.first_name
-
-  elsif params[:order][:select_address] == "1"
-    @address = Address.find(params[:order][:address_id])
-    @order.post_code = @address.post_code
-    @order.address = @address.address
-    @order.name = @address.name
-
-  else
-
-    @order.post_code = params[:order][:postal_code]
-    @order.address = params[:order][:address]
-    @order.name = params[:order][:name]
-
-  end
-     @total = 0
-     @cart_items = current_customer.cart_items.all
+    if params[:order][:select_address] == "0"
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.family_name + current_customer.first_name
+    elsif params[:order][:select_address] == "1"
+      @address = Address.find(params[:order][:addresses_id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.shipname
+    else
+      @order.post_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+    end
+      @total = 0
+      @cart_items = current_customer.cart_items
+      @order_new = Order.new
+      render :confirm
   end
 
   def index
@@ -59,8 +57,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @toral = 0
-
   end
+
+  def complete
+  end
+
 
 private
 
@@ -68,4 +69,11 @@ private
     params.require(:order).permit(:customer_id, :post_code, :address, :name, :postage, :total_price, :payment_method, :orders_status)
   end
 
+  def cartitem_nill
+     cart_items = current_customer.cart_items
+     if cart_items.blank?
+      #注文完了画面に遷移させる
+      redirect_to cart_items_path
+     end
+  end
 end
