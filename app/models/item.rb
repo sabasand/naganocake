@@ -3,7 +3,8 @@ class Item < ApplicationRecord
 
   # megeという名前でActiveStorageで商品画像を保存できるように設定
   has_one_attached :image
-
+  has_many :cart_items
+  has_many :order_details
   # itemとgenreを結びつける設定
   belongs_to :genre  # ジャンルに属する
 

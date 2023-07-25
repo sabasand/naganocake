@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2023_07_24_075909) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "family_name_kana", default: "", null: false
     t.string "first_name_kana", default: "", null: false
-    t.boolean "is_deleted", default: false, null: false
+    t.boolean "is_deleted", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -126,6 +126,18 @@ ActiveRecord::Schema.define(version: 2023_07_24_075909) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "payment_method", default: 0, null: false
     t.integer "orders_status", default: 0, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
