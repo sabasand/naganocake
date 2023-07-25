@@ -13,20 +13,21 @@
           <th>購入日時</th>
           <th>購入者</th>
           <th>注文個数</th>
+          <th>注文ステータス</th>
         </tr>
       </thead>
 
       <tbody>
         <% @order.each do |order| %>
         <tr>
-          <td><%= order.id %></td>
           <td>
             <%= link_to admin_order_path(order.id) do %>
-            <%= order.create_at + order.update.at %>
+            <%= l order.created_at ,format: :long%>
             <% end %>
           </td>
-          <td><%= order.customer.id.name %></td>
-          <td><%= order.oder_detail.quantity %></td>
+          <td><%= order.name %></td>
+          <td><%= order.order_details.sum(:quantity) %></td>
+          <td><%= order.orders_status %></td>
         <% end %>
         </tr>
       </tbody>

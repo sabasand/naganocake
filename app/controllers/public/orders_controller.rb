@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :cartitem_nill,   only: [:new, :create]
 
   def new
     @order = current_customer.orders.new
@@ -7,22 +8,23 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = current_customer.orders.new(order_params)
-    if @order.save
-      cart_items = current_customer.cart_items
-      cart_items.each do |c_item|
+    @order.save
+    @cart_items = current_customer.cart_items.all
+      @cart_items.each do |cart_item|
         order_detail = OrderDetail.new
         order_detail.order_id = @order.id
-        order_detail.item_id = c_item.item_id
-        order_detail.quantity = c_item.quantity
-        order_detail.price = c_item.item.price
+        order_detail.item_id = cart_item.item_id
+        order_detail.quantity = cart_item.quantity
+        order_detail.price = cart_item.item.price
         order_detail.production_status = 0
-        order_detail.save
+        order_detail.save!
       end
-      cart_items.destroy_all
-      redirect_to confirm_path
-    else
-      render :new
-    end
+    @cart_items.destroy_all
+    redirect_to complete_path
+#    else
+#      render :new
+#    end
+
   end
 
 
@@ -44,7 +46,9 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:name]
     end
       @total = 0
-      @cart_items = current_customer.cart_items.all
+      @cart_items = current_customer.cart_items
+      @order_new = Order.new
+      render :confirm
   end
 
   def index
@@ -67,4 +71,11 @@ private
     params.require(:order).permit(:customer_id, :post_code, :address, :name, :postage, :total_price, :payment_method, :orders_status)
   end
 
+  def cartitem_nill
+     cart_items = current_customer.cart_items
+     if cart_items.blank?
+      #注文完了画面に遷移させる
+      redirect_to cart_items_path
+     end
+  end
 end
