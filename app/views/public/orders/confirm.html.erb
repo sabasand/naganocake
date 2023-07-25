@@ -8,47 +8,54 @@
 
   <div class="row">
     <div class="col-md-8">
-      <table class="table", border="1">
-        <thead class="thead-light">
-          <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @cart_items.each do |cart_item| %>
-          <tr>
-              <td><%= image_tag cart_item.item.get_image(40,30) %><%= cart_item.item.name %></td>
-              <td><%= cart_item.item.price.to_s(:delimited) %></td>
-              <td><%= cart_item.quantity %></td>
-              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-          </tr>
-              <% @total += cart_item.subtotal %>
-          <% end %>
-        </tbody>
-      </table>
+
+    <table class="table", border="1">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+            <td><%= image_tag cart_item.item.get_image(40,30) %><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.price.to_s(:delimited) %></td>
+            <td><%= cart_item.quantity %></td>
+            <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+        </tr>
+            <% @total += cart_item.subtotal %>
+        <% end %>
+      </tbody>
+    </table>
     </div>
-    <div class="col-md-4">
+
+      <div class="col-md-4">
       <table class="table", border="1">
+        <%= form_with model: @order, url: orders_path, method: :post do |f| %>
         <tr>
           <th class="bg-light">送料</th>
               <% @order.postage = 800 %>
           <td><%= @order.postage.to_s(:delimited) %></td>
         </tr>
+
         <tr>
           <th class="bg-light">商品合計</th>
           <td><%= @total.to_s(:delimited) %></td>
         </tr>
+
         <tr>
           <th class="bg-light">請求金額</th>
               <% @order.total_price = @total + @order.postage %>
           <td><%= @order.total_price.to_s(:delimited) %></td>
         </tr>
       </table>
+
+      </div>
     </div>
-  </div>
 
 
     <div class="row">
@@ -74,7 +81,9 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <%= f.submit "注文を確定する", class: "btn btn-success" %>
-    <% end %>
     </div>
   </div>
+
+    <% end %>
+
 </div>

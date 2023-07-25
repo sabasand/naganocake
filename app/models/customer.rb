@@ -16,9 +16,12 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phonenumber, presence: true, length: {maximum: 11, minimum: 10}
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
- def name
+  def name
     family_name + first_name
- end
+  end
 
 end

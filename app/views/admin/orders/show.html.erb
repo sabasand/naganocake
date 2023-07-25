@@ -36,16 +36,12 @@
           </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
-          <% @order_details.each do |od| %>
-=======
           <% @order_details.each do |order_detail| %>
->>>>>>> 3bd6b76d8a6620c60c8dedab429e595a0bdc9525
             <tr>
-              <td><%= od.item.name %></td>
-              <td><%= od.price %></td>
-              <td><%= od.quantity %></td>
-              <td><%= od.price * od.quantity %></td>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.price %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= order_detail.price * order_detail.quantity %></td>
             <tr>
           <% end %>
         </tbody>
