@@ -14,9 +14,9 @@
 
     <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to "退会しない", public_mypage_path, class: "btn btn-primary" %>
+      <%= link_to "退会しない", mypage_path, class: "btn btn-primary" %>
 
-      <%= link_to "退会する", public_customers_withdraw_path, class: "btn btn-danger", method: :patch, data: {confirm: "本当に退会しますか？" } %>
+      <%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger", method: :patch, data: {confirm: "本当に退会しますか？" } %>
     </div>
   </div>
 

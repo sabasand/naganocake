@@ -30,7 +30,7 @@
     <div class="row ml-3 py-1 px-4">
       <div class="col-3">
         <%= f.radio_button :select_address, 0, checked: "checked", class: "form-check-input" %>
-        <%= f.label :address, "ご自身の住所", class: "form-check-label" %>
+        <%= f.label :select_address_0, "ご自身の住所", class: "form-check-label" %>
       </div>
     </div>
       <div class="row ml-6 px-5">
@@ -44,21 +44,21 @@
         </div>
       </div>
     <div class="row ml-3 py-2 px-4">
-      <div class="col-3">
+      <div class="col-lg">
         <%= f.radio_button :select_address, 1, class: "form-check-input" %>
-        <%= f.label :address, "登録済住所から選択", class: "form-check-label" %>
+        <%= f.label :select_address_1, "登録済住所から選択", class: "form-check-label" %>
       </div>
     </div>
-      <div class="row ml-6 px-5">
-        <div class="col-10">
-          <%= f.select :addresses_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display), class: "form-select" %>
+      <div class="row ml-3 px-5">
+        <div>
+          <%= f.select :addresses_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display), class: "form-select form-select-lg" %>
         </div>
       </div>
 
     <div class="row ml-3 py-2 px-4">
       <div class="col-3">
         <%= f.radio_button :select_address, 2, class: "form-check-input" %>
-        <%= f.label :address, "新しいお届け先", class: "form-check-label" %>
+        <%= f.label :select_address_2, "新しいお届け先", class: "form-check-label" %>
       </div>
     </div>
 
