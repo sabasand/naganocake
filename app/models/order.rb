@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
 
+ has_many :items, through: :cart_item
  has_many :order_details, dependent: :destroy
  belongs_to :customer
 

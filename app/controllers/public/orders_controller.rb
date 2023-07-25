@@ -7,25 +7,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_customer.orders.new(order_params)
-    @order.save
-    @cart_items = current_customer.cart_items.all
-      @cart_items.each do |cart_item|
-        order_detail = OrderDetail.new
-        order_detail.order_id = @order.id
-        order_detail.item_id = cart_item.item_id
-        order_detail.quantity = cart_item.quantity
-        order_detail.price = cart_item.item.price
-        order_detail.production_status = 0
-        order_detail.save!
-      end
-    @cart_items.destroy_all
-    redirect_to complete_path
-#    else
-#      render :new
-#    end
+   @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        @order.save
 
+        current_customer.cart_items.each do |cart_item|
+          @order_detail = OrderDetail.new
+          @order_detail.item_id = cart_item.item_id
+          @order_detail.quantity = cart_item.quantity
+          @order_detail.price = (cart_item.item.price*1.1).floor
+          @order_detail.order_id =  @order.id
+          @order_detail.save
+        end
+
+        current_customer.cart_items.destroy_all #カートの中身を削除
+        redirect_to complete_orders_path
   end
+
 
 
   def confirm

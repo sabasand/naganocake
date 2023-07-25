@@ -7,7 +7,6 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = OrderDetail.all
-    @full_name = @order.customer.family_name + "" + @order.customer.first_name
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 end

@@ -62,13 +62,15 @@
       <%= @order.name %>
       </div>
     </div>
-    <%= form_with model: @order_new, url: orders_path, method: :post do |f| %>
-      <%= f.hidden_field :postage, value: 800 %>
-      <%= f.hidden_field :total_price, value: @total + 800 %>
-      <%= f.hidden_field :payment_method, value:  @order.payment_method %>
-      <%= f.hidden_field :post_code, value: @order.post_code %>
-      <%= f.hidden_field :address, value: @order.address %>
-      <%= f.hidden_field :name, value: @order.name %>
+
+    <%= f.hidden_field :postage %>
+    <%= f.hidden_field :total_price%>
+    <%= f.hidden_field :payment_method %>
+    <%= f.hidden_field :post_code %>
+    <%= f.hidden_field :address %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :ordersstatus %>
+
   <div class="row">
     <div class="col-md-12 text-center">
       <%= f.submit "注文を確定する", class: "btn btn-success" %>
