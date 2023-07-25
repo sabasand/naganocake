@@ -17,20 +17,28 @@
       </thead>
 
       <tbody>
-        <% @order.each do |order| %>
+      <% @order.each do |order| %>
         <tr>
-          <td><%= order.id %></td>
           <td>
             <%= link_to admin_order_path(order.id) do %>
-            <%= order.create_at + order.update.at %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
             <% end %>
           </td>
-          <td><%= order.customer.id.name %></td>
-          <td><%= order.oder_detail.quantity %></td>
-        <% end %>
+          <td>
+            <%= order.name %>
+          </td>
+          <td>
+            <% total_quantity = 0 %>
+            <% order.order_details.each do |order_details| %>
+              <% total_quantity += order_details.quantity %>
+            <% end %>
+            <%= total_quantity %>
+          </td>
         </tr>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+
+  </table>
     </div>
     <!--<div class="col-md-2"></div>-->
 

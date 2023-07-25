@@ -5,28 +5,24 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new
   end
 
-
-
   def create
-    @order = current_customer.orders.new(order_params)
+   @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        @order.save
 
-    if @order.save
-      cart_items = current_customer.cart_items
-      cart_items.each do |cart_item|
-        order_detail = OrderDetail.new
-        order_detail.order_id = @order.id
-        order_detail.product_id = cart_item.item_id
-        order_detail.quantity = cart_item.quantity
-        order_detail.price = cart_item.item.price
-        order_detail.produciton_status = 0
-        order_detail.save
-      end
-      cart_items.destroy_all
-    redirect_to complete_path
-    else
-      render :new
-    end
+        current_customer.cart_items.each do |cart_item|
+          @order_detail = OrderDetail.new
+          @order_detail.item_id = cart_item.item_id
+          @order_detail.quantity = cart_item.quantity
+          @order_detail.price = (cart_item.item.price*1.1).floor
+          @order_detail.order_id =  @order.id
+          @order_detail.save
+        end
+
+        current_customer.cart_items.destroy_all #カートの中身を削除
+        redirect_to complete_orders_path
   end
+
 
 
   def confirm
@@ -69,7 +65,7 @@ class Public::OrdersController < ApplicationController
 private
 
   def order_params
-    params.require(:order).permit(:customer_id, :post_code, :address, :name, :postage, :total_price, :payment_method, :order_status)
+    params.require(:order).permit(:customer_id, :post_code, :address, :name, :postage, :total_price, :payment_method, :orders_status)
   end
 
 end
