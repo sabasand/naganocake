@@ -2,7 +2,7 @@ class Admin::OrdersController < ApplicationController
   def index
     @order = Order.page(params[:page])
     customer_id = Customer.find_by(id: @order.ids)
-    @full_name = customer_id.family_name + "" + customer_id.first_name
+    #@full_name = customer_id.family_name + "" + customer_id.first_name
   end
 
   def show
